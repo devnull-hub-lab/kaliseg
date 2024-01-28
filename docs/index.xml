@@ -14,9 +14,9 @@
     
     <item>
       <title>/PROC – HidePID – Esconder Processos de outros usuários</title>
-      <link>https://kali.seg.br/post/1_hidepid/</link>
+      <link>https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/</link>
       
-      <guid>https://kali.seg.br/post/1_hidepid/</guid>
+      <guid>https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/</guid>
       <description>&lt;p&gt;Conceito, Exemplos e Formas de Proteção&lt;/p&gt;</description>
     </item>
     

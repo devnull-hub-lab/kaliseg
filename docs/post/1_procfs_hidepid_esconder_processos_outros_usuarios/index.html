@@ -46,14 +46,14 @@
 <meta name="description" content="Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks."> 
 
 
-<link rel="canonical" href="https://kali.seg.br/post/1_hidepid/" />
+<link rel="canonical" href="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
 
 
   
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:description" content="Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks." /> 
   <meta name="twitter:title" content="/PROC – HidePID – Esconder Processos de outros usuários | KALI - Segurança Defensiva e Ofensiva" />
-  <meta name="twitter:url" content="https://kali.seg.br/post/1_hidepid/" />
+  <meta name="twitter:url" content="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
   <meta name="twitter:site" content="@Softorage" /> 
   <meta name="twitter:creator" content="@Softorage" /> 
   <meta name="twitter:image" content="" /> 
@@ -66,7 +66,7 @@
   <meta property="og:site_name" content="KALI - Segurança Defensiva e Ofensiva" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://kali.seg.br/post/1_hidepid/" />
+  <meta property="og:url" content="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
   
   <meta property="og:image" content="" /> 
 
@@ -258,25 +258,25 @@
             Share on:&nbsp;&nbsp;
             <div class="d-inline-block lead">
               
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f&quote=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Facebook" aria-label="Share on Facebook"><span class="fab fa-facebook"></span></a>&nbsp;&nbsp;
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&quote=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Facebook" aria-label="Share on Facebook"><span class="fab fa-facebook"></span></a>&nbsp;&nbsp;
               
               
-                <a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios:%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f" rel="noreferrer nofollow" target="_blank" title="Share on Twitter" aria-label="Share on Twitter"><span class="fab fa-twitter"></span></a>&nbsp;&nbsp;
+                <a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios:%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f" rel="noreferrer nofollow" target="_blank" title="Share on Twitter" aria-label="Share on Twitter"><span class="fab fa-twitter"></span></a>&nbsp;&nbsp;
               
               
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&summary=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.&source=KALI%20-%20Seguran%c3%a7a%20Defensiva%20e%20Ofensiva" rel="noreferrer nofollow" target="_blank" title="Share on LinkedIn" aria-label="Share on LinkedIn"><span class="fab fa-linkedin"></span></a>&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&summary=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.&source=KALI%20-%20Seguran%c3%a7a%20Defensiva%20e%20Ofensiva" rel="noreferrer nofollow" target="_blank" title="Share on LinkedIn" aria-label="Share on LinkedIn"><span class="fab fa-linkedin"></span></a>&nbsp;&nbsp;
               
               
-                <a href="https://t.me/share/url?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Telegram" aria-label="Share on Telegram"><span class="fab fa-telegram"></span></a>&nbsp;&nbsp;
+                <a href="https://t.me/share/url?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Telegram" aria-label="Share on Telegram"><span class="fab fa-telegram"></span></a>&nbsp;&nbsp;
               
               
-                <a href="whatsapp://send?text=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f%0A%0A%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" data-text="/PROC – HidePID – Esconder Processos de outros usuários" data-href="https://kali.seg.br/post/1_hidepid/" rel="noreferrer nofollow" target="_blank" title="Share on Whatsapp" aria-label="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>&nbsp;&nbsp;
+                <a href="whatsapp://send?text=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f%0A%0A%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" data-text="/PROC – HidePID – Esconder Processos de outros usuários" data-href="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" rel="noreferrer nofollow" target="_blank" title="Share on Whatsapp" aria-label="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>&nbsp;&nbsp;
               
               
-                <a href="https://reddit.com/submit?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Reddit" aria-label="Share on Reddit"><span class="fab fa-reddit"></span></a>&nbsp;&nbsp;
+                <a href="https://reddit.com/submit?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Reddit" aria-label="Share on Reddit"><span class="fab fa-reddit"></span></a>&nbsp;&nbsp;
               
               
-                <a href="mailto:?subject=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&body=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.%0A%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_hidepid%2f" target="_blank" title="Share via email" aria-label="Share via email"><span class="fas fa-envelope"></span></a>
+                <a href="mailto:?subject=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&body=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.%0A%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f" target="_blank" title="Share via email" aria-label="Share via email"><span class="fas fa-envelope"></span></a>
               
             </div>
           </div>

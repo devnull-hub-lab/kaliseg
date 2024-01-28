@@ -11,9 +11,9 @@
     <atom:link href="https://kali.seg.br/tags/defesa_interna/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>/PROC – HidePID – Esconder Processos de outros usuários</title>
-      <link>https://kali.seg.br/post/1_hidepid/</link>
+      <link>https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/</link>
       <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://kali.seg.br/post/1_hidepid/</guid>
+      <guid>https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/</guid>
       <description>&lt;p&gt;Conceito, Exemplos e Formas de Proteção&lt;/p&gt;</description>
     </item>
   </channel>
