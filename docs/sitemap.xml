@@ -3,15 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kali.seg.br/tags/get-started/</loc>
+    <loc>https://kali.seg.br/post/1_hidepid/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/post/getting-started/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/tags/guide/</loc>
+    <loc>https://kali.seg.br/tags/defesa_interna/</loc>
   </url>
   
   <url>
@@ -20,6 +16,10 @@
   
   <url>
     <loc>https://kali.seg.br/post/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kali.seg.br/tags/seguranca/</loc>
   </url>
   
   <url>

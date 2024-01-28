@@ -4,9 +4,9 @@
       "a",
       "b",
       "body",
+      "br",
       "code",
       "div",
-      "em",
       "footer",
       "h1",
       "h2",
@@ -64,7 +64,6 @@
       "fa-envelope",
       "fa-facebook",
       "fa-github",
-      "fa-gitlab",
       "fa-instagram",
       "fa-linkedin",
       "fa-reddit",
@@ -133,17 +132,25 @@
       "text-reset"
     ],
     "ids": [
-      "1-as-a-hugo-theme-recommended",
-      "2-as-git-submodule",
+      "/proc_–_hidepid_–_esconder_processos_de_outros_usuários",
       "TableOfContents",
+      "com-o-sistema-em-execução",
+      "como-mudar-essa-opção",
+      "como-se-proteger",
+      "conceito",
       "content",
-      "get_started",
-      "getting-up-and-running",
-      "getting_started_with_vibrant_shadows",
-      "guide",
-      "prerequisites",
-      "setting-up-new-hugo-website",
-      "using-boilerplate-provided"
+      "defesa_interna",
+      "exemplo",
+      "mas-porquê-isso-é-um-problema",
+      "modo-permanente",
+      "nível-altamente-restrito--4",
+      "nível-padrão--0",
+      "nível-parcialmente-restrito--1",
+      "nível-restrito--2",
+      "porque-essa-opção-não-vem-restrita-por-padrão-ao-instalar-o-sistema",
+      "problema",
+      "que-tipos-de-complicações",
+      "seguranca"
     ]
   }
 }
