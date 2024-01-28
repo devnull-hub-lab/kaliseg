@@ -1,7 +1,7 @@
-baseURL: "https://kali.seg.br/docs/" # url address of the website | required
+baseURL: "https://kali.seg.br/" # url address of the website | required
 title: "KALI - Seguranca Defensiva e Ofensiva" # title of the site; usually same as brand name | required
 copyright: "Copyright &#169; 2020 Softorage. All rights reserved." # should match 'brand -> name', and 'contentLicense' under params below; used in default rss template: https://gohugo.io/templates/rss/#configure-rss | optional
-languageCode: "en-us" # recommended | no default
+languageCode: "pt-br"
 theme: "HugoTheme-VibrantShadows"
 # googleAnalytics: "G-123456789-0" # Respecting your preference from 'privacy', and 'params' -> 'user_experience' below, if you set this value, Google Analytics code will be included. Google Analytics included only when serving the website on 'production' environment (i.e. website built with `hugo` command and not `hugo serve`)
 # disqusShortname: "yourdiscussshortname" # Respecting your preference from 'privacy', if you set this value, Disqus comments code will be included at the end of the blog posts. Disqus comments are shown only when serving the website on 'production' environment (i.e. website built with `hugo` command and not `hugo serve`)
@@ -35,15 +35,15 @@ params:
     share: ["facebook", "twitter", "linkedin", "telegram", "whatsapp", "reddit", "email"] # accepts array of values: "facebook", "twitter", "linkedin", "whatsapp", "reddit", "email". just type the name of those you want you articles to be able to be shared on
   meta:
     author: "Softorage" # website-wide author | required
-    tagline: "KALI LINUX - TITULO" # shown in website title on homepage and also used in seo | required
-    description: "An insanely customizable, extremely lightweight and ridiculously fast 'Blog Theme' for Hugo." # should include brand name | character length: 50 to 160 characters
+    tagline: "KALI LINUX" # shown in website title on homepage and also used in seo | required
+    description: "Seguranca Defensiva e Ofensiva" # should include brand name | character length: 50 to 160 characters
     contentLicense: "CC-BY-SA-3.0" # cc-by-3.0, etc or 'All right reserved.' should also be same as the one in copyright above
     titleSeparator: " | " # used in website/blog title, to separate (say) page title from website/blog title | default: " | "
     attribution: "enable" # attribute Hugo team for awesome software and Softorage for great theme | default: "enable"
   brand:
     name: "Vibrant Shadows" # brand name (Samy's blog), usually just one word that is name of the brand | required | no default
-    logo_500px: "/docs/assets/favicon/android-chrome-512x512.png" # path (preferably relative path) to brand's good resolution logo | required | no default
-    logo_32px: "/docs/assets/favicon/favicon-32x32.png" # will be shown on navbar as is
+    logo_500px: "/assets/favicon/android-chrome-512x512.png" # path (preferably relative path) to brand's good resolution logo | required | no default
+    logo_32px: "/assets/favicon/favicon-32x32.png" # will be shown on navbar as is
     color: "#7d1fa5" # color to be shown for brand name on navbar on scroll | required | no default
     navbar: ["logo", "name"] # accepts array of values: "logo", "name" | this configuration shows brand 'log' & brand 'name' on navbar | optional | default: ["logo", "name"]
   theme: # optional

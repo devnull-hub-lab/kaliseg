@@ -5,7 +5,6 @@
       "b",
       "body",
       "code",
-      "details",
       "div",
       "em",
       "footer",
@@ -28,8 +27,6 @@
       "script",
       "small",
       "span",
-      "strong",
-      "summary",
       "title",
       "ul"
     ],
@@ -139,28 +136,14 @@
       "1-as-a-hugo-theme-recommended",
       "2-as-git-submodule",
       "TableOfContents",
-      "additional_information_about_the_theme",
-      "built-with",
-      "configuration",
       "content",
-      "contributing",
-      "custom_configuration_options_in_the_theme",
-      "customize",
-      "example_config.yaml",
       "get_started",
       "getting-up-and-running",
       "getting_started_with_vibrant_shadows",
       "guide",
-      "hugo's_built-in_global_configurations",
-      "hugos-built-in-global-parameters",
-      "license",
-      "page-parameters",
-      "page_configuration_options_in_the_theme",
       "prerequisites",
       "setting-up-new-hugo-website",
-      "settings",
-      "using-boilerplate-provided",
-      "vibrant-shadows-custom-parameters"
+      "using-boilerplate-provided"
     ]
   }
 }

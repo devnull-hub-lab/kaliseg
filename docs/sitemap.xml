@@ -3,63 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kali.seg.br/docs/tags/get-started/</loc>
+    <loc>https://kali.seg.br/tags/get-started/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/docs/post/getting-started/</loc>
+    <loc>https://kali.seg.br/post/getting-started/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/docs/tags/guide/</loc>
+    <loc>https://kali.seg.br/tags/guide/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/docs/</loc>
+    <loc>https://kali.seg.br/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/docs/post/</loc>
+    <loc>https://kali.seg.br/post/</loc>
   </url>
   
   <url>
-    <loc>https://kali.seg.br/docs/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/tags/configuration/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/tags/customize/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/post/hugo-built-in-global-configuration/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/tags/settings/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/post/theme-custom-global-configuration/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/post/page-configuration/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/post/example-config-yaml/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/post/additional-info/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kali.seg.br/docs/tags/license/</loc>
+    <loc>https://kali.seg.br/tags/</loc>
   </url>
   
 </urlset>
