@@ -26,12 +26,12 @@ vim teste.txt
 
 Em outro terminal, ao analisarmos os processos em execução no sistema, encontramos o nosso processo criado e seu respectivo PID:
 
-![.](https://kali.seg.br/imgs/hidepid_vim.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_vim.webp)
 
 Aqui, o PID 2143 que está em execução, é um descritor de arquivo que está localizado no sistema de arquivos “virtual” /PROC.  
 Podemos verificar “na unha” os detalhes da execução dele diretamente pelo diretório /PROC (abaixo), no qual podemos saber o que o PID em questão está fazendo:
 
-![.](https://kali.seg.br/imgs/hidepid_proc.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_proc.webp)
 
 ## Problema
 
@@ -48,7 +48,7 @@ Se um invasor conseguir acesso a shell do sistema (utilizando algum RCE por exem
 Este invasor com acesso a estas informações do sistema pode fazer uso de engenharia social para roubar mais dados ou extorquir o administrador do sistema.  
 Como um usuário por padrão consegue ver processos em execução de outros usuários, vamos supor que o invasor resolva monitorar em tempo real os processos em execução no sistema:
 
-![.](https://kali.seg.br/imgs/hidepid_tmux.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_tmux.webp)
 
 Observem que em um momento, o invasor nessa situação hipotética capturou a informação de que o ROOT estava criando/alterando um arquivo sugestivo chamado “senhas_de_emails.txt“.
 
@@ -74,7 +74,7 @@ Quem trabalha com engenharia social, conhece todos esses mecanismos de PNL (prog
 
 O Kernel possui uma funcionalidade que esconde informações de processos de outros usuários do sistema. Dando uma olhada no código fonte do Kernel (https://github.com/torvalds/linux), encontramos a seguinte informação:
 
-![.](https://kali.seg.br/imgs/hidepid_source.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_source.webp)
 
 ### Nível Padrão – 0
 
@@ -86,7 +86,7 @@ Por padrão, a maioria das distribuições Linux (no qual o Kali Linux se inclui
 Quando setado para 1 (HIDEPID_NO_ACCESS), a partição /PROC é montada de modo a permitir que outros usuários consigam saber o número dos processos de todos os usuários (PID) que estão em execução, mas não permite que se consiga ler a informação do usuário que está executando e nem do que está sendo rodado nesses processos.  
 Veja abaixo como funciona essa restrição na prática:
 
-![.](https://kali.seg.br/imgs/hidepid_hidepid_1.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_hidepid_1.webp)
 
 Observem que utilizando o utilitário ps/top/htop, meu usuário comum (devnull) já não conseguiu mais visualizar os processos abertos pelo root, apenas meus próprios processos. Porém investigando “na unha” a partição /proc, consigo visualizar a numeração de processos (PID) não iniciados por mim. Mas ao tentar visualizá-los, não consigo saber nem quem iniciou o processo e nem o que é o processo em questão, pois o /PROC agora me limita essa visualização.  
 Esta opção já é boa, mas abre brechas para se caso houver uma vulnerabilidade que permita explorar o /PROC, se saiba a numeração dos processos em execução, e consequentemente, explorar seu conteúdo.
@@ -96,7 +96,7 @@ Esta opção já é boa, mas abre brechas para se caso houver uma vulnerabilidad
 Para restringir ainda mais, podemos alterar a visibilidade para HIDEPID = 2.
 Quando setado para 2 (HIDEPID_INVISIBLE), a partição /PROC é montada para não permitir que os usuários sequer saibam números de processos que não sejam os do próprio usuário. Veja abaixo o mesmo cenário acima com o HIDEPID = 2:
 
-![.](https://kali.seg.br/imgs/hidepid_hidepid_2.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_hidepid_2.webp)
 
 Observem agora, que apenas o número dos processos do usuário logado constam na partição /PROC, todos os demais permanecem invisíveis.
 
@@ -110,7 +110,7 @@ Chegamos no HIDEPID = 4 (ou HIDEPID_NOT_PTRACEABLE).
 Esta opção restringe os usuários de realizar até mesmo uma depuração ou rastreamento de system calls (chamadas do sistema), que envolvam PID que não sejam os iniciados pelo próprio usuário. Esta opção, por ser altamente restrita, não é recomendável para quem precise depurar aplicações e monitorar o funcionamento dela, ou rastrear as system calls. Recomendo ativar apenas em casos mais estritos e específicos.  
 Como exemplo, se investigarmos as system calls do comando “ps aux” no nivel restrito (hidepid = 2), podemos visualizar o número de processos que não deveriam ser visíveis (abaixo):
 
-![.](https://kali.seg.br/imgs/hidepid_hidepid_2_debug.webp)
+![.](https://kali.seg.br/post/imgs/hidepid_hidepid_2_debug.webp)
 
 Já utilizando o nível altamente restrito, nem isso é possível fazer.
 
