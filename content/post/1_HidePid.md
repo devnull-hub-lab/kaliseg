@@ -1,7 +1,7 @@
 ---
 title: "/PROC – HidePID – Esconder Processos de outros usuários"
 author: "Rafael Grether"
-description: "Aprenda e esconder processos em execução de outros usuários e se proteger contra data leaks."
+description: "Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks."
 tags: ["seguranca", "defesa_interna"]
 date: "2024-01-28"
 ---
@@ -14,7 +14,7 @@ Conceito, Exemplos e Formas de Proteção
 /PROC pode ser considerado como um sistema de arquivos “virtual” que contém arquivos especiais com informações do hardware, informações e configurações do sistema a um nível do kernel (como /proc/meminfo , /proc/mounts , /proc/sys) e processos em execução no sistema.
 
 Existe um conceito que diz “everything is a file” (ou seja, tudo é um arquivo). Nisso se resume a arquitetura do sistema operacional.  
-E significa que tudo o que existe no sistema, desde arquivos, diretórios, até sockets e processos; é um arquivo. Mais especificamente falando, um descritor de arquivo, que de modo grosseiro seria uma espécie de “código” que o sistema operacional utiliza para gerenciamento, e isso ocorre através de uma camada especial no kernel do sistema, que é o chamado sistema de arquivos “virtual”, ou PROCFS, mais conhecido como /PROC filesystem.
+Isso significa que tudo o que existe no sistema, desde arquivos, diretórios, até sockets e processos; é um arquivo. Mais especificamente falando, um descritor de arquivo, que de modo grosseiro seria uma espécie de “código” que o sistema operacional utiliza para gerenciamento, e isso ocorre através de uma camada especial no kernel do sistema, que é o chamado sistema de arquivos “virtual”, ou PROCFS, mais conhecido como /PROC filesystem.
 
 ### Exemplo
 
@@ -78,7 +78,7 @@ O Kernel possui uma funcionalidade que esconde informações de processos de out
 
 ### Nível Padrão – 0
 
-Por padrão, a maioria das distribuições Linux (no qual o Kali Linux se inclui) mantém os processos visíveis para todos os usuários (HIDEPID = 0), o que conforme vimos é um risco de segurança, pois pode vazar informações privilegiadas para outros usuários.
+Por padrão, o Kali Linux (e a maioria das distribuições Linux) mantém os processos visíveis para todos os usuários (HIDEPID = 0), o que conforme vimos é um risco de segurança, pois pode vazar informações privilegiadas para outros usuários.
 
 ### Nível Parcialmente Restrito – 1
 
@@ -140,10 +140,11 @@ proc    /proc        proc        defaults,hidepid=2    0 0
 
 A linha acima no fstab, monta o sistema de arquivos “proc” no ponto de montagem /proc, mantendo o padrão (defaults) desse sistema de arquivos, acrescentando a restrição de visibilidade de processos (hidepid=2), ignorando flags de backup e verificação de integridade, que não fazem sentido em um procfs.
 
-## Porque essa opção não vem restrita por padrão ao instalar o sistema?
+## Porque essa opção não vem restrita por padrão ao instalar o sistema? Existe contras?
 
-Porque a maioria das distribuições Linux (incluindo o Kali Linux) são abertas, para que se tenha uma alta funcionalidade no uso de ferramentas e processos.
+Isso ocorre porque o Kali Linux (e a maioria das distribuições Linux) são abertas, para que se tenha uma alta funcionalidade no uso de ferramentas e processos.
 
-Isso significa que uma restrição dessa visibilidade pode interferir no funcionamento de algumas ferramentas, principalmente as de monitoração de processos do sistema.
+Isso significa que uma restrição dessa visibilidade pode interferir no funcionamento de algumas ferramentas, principalmente as de monitoração de processos do sistema.  
+Claro que é possível contornar isso, modificando as permissões do grupo de acesso utilizado por essas ferramentas, e cada caso deve ser avaliado isoladamente.
 
-Lembrem-se que quanto mais segurança é parametrizada um sistema, mais restrito ele é, e em alguns casos menos funcional ele fica.
+Lembrem-se que quanto mais segurança for parametrizado em um sistema, mais restrito ele é, e em alguns casos menos funcional ele fica.
