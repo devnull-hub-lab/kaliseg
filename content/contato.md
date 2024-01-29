@@ -9,24 +9,15 @@ date: "2024-01-28"
 
 devnull@apt322.org
 
-rgrether@riseup.net
-
 ## IRC
 
-**Chat Oficial**  
 /server irc.kali.seg.br +6698 /j #kali
 
-/server irc.slackjeff.com.br +6697 /j #mundo-libre
-
-/server irc.gigachat.net +6697 /j #gigachat
-
-/server irc.libera.chat +6697
+Se não possuir cliente de IRC, entre em: https://chat.kali.seg.br
 
 ## XMPP
 
 devnull@xmppbrasil.net
-
-devnull@slackjeff.com.br
 
 ## Chave GPG (devnull)
 
