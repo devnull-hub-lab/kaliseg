@@ -23,6 +23,10 @@ menu:
       name: "3. Contato" # shown on website/blog
       url: "/contato/" # user is taken to this url when user clicks on menu item
       weight: 10 # used to sort menu items by weight
+    - identifier: "tags" # different for all menu entries, useful especially when menu name coincides
+      name: " Categorias" # shown on website/blog
+      url: "/tags/" # user is taken to this url when user clicks on menu item
+      weight: 10 # used to sort menu items by weight
 
 # Allow HTML in markdown to be rendered, for social platform list in configuration options
 markup:
@@ -45,7 +49,6 @@ params:
       facebook: "https://www.facebook.com/groups/1718728595076394"
       twitter: "https://twitter.com/devnull322"
       github: "https://github.com/devnull-hub-lab"
-      instagram: "https://www.instagram.com/rafaelgrether/"
     share: ["facebook", "twitter", "linkedin", "telegram", "whatsapp", "reddit", "email"] # accepts array of values: "facebook", "twitter", "linkedin", "whatsapp", "reddit", "email". just type the name of those you want you articles to be able to be shared on
   meta:
     author: "Rafael Grether" # website-wide author | required
