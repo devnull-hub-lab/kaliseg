@@ -13,6 +13,9 @@ rgrether@riseup.net
 
 ## IRC
 
+**Chat Oficial**  
+/server irc.kali.seg.br +6698 /j #kali
+
 /server irc.slackjeff.com.br +6697 /j #mundo-libre
 
 /server irc.gigachat.net +6697 /j #gigachat
