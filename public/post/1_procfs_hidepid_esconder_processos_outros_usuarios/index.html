@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/PROC – HidePID – Esconder Processos de outros usuários | KALI - Segurança Defensiva e Ofensiva</title>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/assets/css/theme.min.3368647ff671fce7c931d331f7b1d85edf1761e36530c9e83d4a824d5eaa2e51.css" integrity="sha256-M2hkf/Zx/OfJMdMx97HYXt8XYeNlMMnoPUqCTV6qLlE=" crossorigin="anonymous">
+
+  
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  
+  <link rel=apple-touch-icon sizes=180x180 href=https://kali.seg.br//assets/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://kali.seg.br//assets/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://kali.seg.br//assets/favicon/favicon-16x16.png><link rel=manifest href=https://kali.seg.br//assets/favicon/site.webmanifest><link rel=mask-icon href=https://kali.seg.br//assets/favicon/safari-pinned-tab.svg color=#7817c4><link rel=icon href=https://kali.seg.br//assets/favicon/favicon.ico type=image/x-icon><link rel="shortcut icon" href=https://kali.seg.br//assets/favicon/favicon.ico type=image/x-icon><meta name=apple-mobile-web-app-title content="Vibrant Shadows Theme"><meta name=application-name content="Vibrant Shadows Theme"><meta name=msapplication-TileColor content="#ffffff"><meta name=theme-color content="#ffffff">
+  
+  
+  
+  <meta name="theme-color" content="#fff6f8">
+  
+  <meta name="msapplication-navbutton-color" content="#fff6f8">
+  
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  
+  
+  
+    
+      
+
+
+
+
+
+
+
+<meta name="title" content="/PROC – HidePID – Esconder Processos de outros usuários | KALI - Segurança Defensiva e Ofensiva" />
+<meta name="description" content="Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks."> 
+
+
+<link rel="canonical" href="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
+
+
+  
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks." /> 
+  <meta name="twitter:title" content="/PROC – HidePID – Esconder Processos de outros usuários | KALI - Segurança Defensiva e Ofensiva" />
+  <meta name="twitter:url" content="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
+  <meta name="twitter:site" content="@Softorage" /> 
+  <meta name="twitter:creator" content="@Softorage" /> 
+  <meta name="twitter:image" content="" /> 
+
+
+
+  
+  <meta property="og:title" content="/PROC – HidePID – Esconder Processos de outros usuários | KALI - Segurança Defensiva e Ofensiva" />
+  <meta property="og:description" content="Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks." /> 
+  <meta property="og:site_name" content="KALI - Segurança Defensiva e Ofensiva" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" />
+  
+  <meta property="og:image" content="" /> 
+
+
+
+<meta property="article:published_time" content="2024-01-28 00:00:00 &#43;0000 UTC" />
+
+
+  
+  
+  <script type="application/ld+json">
+      { 
+          "@context": "http://schema.org", 
+          "@type": "BlogPosting",
+          "headline": "/PROC – HidePID – Esconder Processos de outros usuários",
+          
+          "url": "https://kali.seg.br/",
+          
+          "datePublished": "2024-01-28T00:00:00Z",
+          
+          
+          "dateModified": "2024-01-28T00:00:00Z",
+          
+          "description": Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks.,
+          
+          "logo": "/assets/favicon/android-chrome-512x512.png",
+          
+          
+          "author": {
+              "@type": "Person",
+              "name": "Rafael Grether"
+          },
+          
+          "publisher": {
+            "@type": "Organization",
+            "name": "Rafael Grether",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "/assets/favicon/android-chrome-512x512.png"
+            }
+          },
+          
+          "sameAs" : [
+            
+            
+              "https://www.facebook.com/groups/1718728595076394",  
+            
+              "https://github.com/devnull-hub-lab",  
+            
+              "https://twitter.com/devnull322"
+            ]
+          
+        }
+      </script>
+  
+
+
+    
+    <meta name="generator" content="Hugo 0.122.0">
+</head>
+
+
+  
+  
+  <body class="dark"><header>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top flex-column">
+    <div class="d-none shadow"></div>
+    <div class="container-fluid">
+      
+      <a class="navbar-brand px-3" href="https://kali.seg.br/"><span class="brand-color"><span class="brand align-middle"><img class="align-middle" src="/assets/favicon/favicon-32x32.png" alt="KALI LINUX logo" height="32"></img><span class="align-middle ml-3">KALI LINUX</span></span></span></a>
+      
+      
+      
+      
+      
+      
+        
+      
+      
+        
+      
+      
+       
+      
+      
+      
+      
+        <a class="navbar-toggler border-0 bg-nav p-2" role="button" href="#" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="text-clr2">&#9776;</span>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          
+            <div class="order-md-1 my-2">
+              
+                  
+                <div class="d-inline-block ml-md-auto mr-2 my-auto p-1 pr-2 bg-nav
+                rounded-lg
+                
+                ">
+                  
+                    
+                      <a class="ml-1" href="https://www.facebook.com/groups/1718728595076394"><span class="fab fa-facebook" aria-label="Join us on Facebook"></span></a>
+                    
+                  
+                    
+                      <a class="ml-1" href="https://github.com/devnull-hub-lab"><span class="fab fa-github" aria-label="Join us on Github"></span></a>
+                    
+                  
+                    
+                      <a class="ml-1" href="https://twitter.com/devnull322"><span class="fab fa-twitter" aria-label="Join us on Twitter"></span></a>
+                    
+                  
+                </div>
+              
+              
+              
+                
+                
+                <div class="d-inline-block ml-3">
+                  <input type="checkbox" class="theme-toggle-checkbox" id="theme_toggle" />
+                  <label class="theme-toggle-label theme-toggle my-auto" for="theme_toggle">
+                    
+                      
+                        
+                        <span class="fas fa-moon"></span>
+                        
+                      
+                    
+                      
+                    
+                      
+                        
+                        <span class="fas fa-sun"></span>
+                        
+                      
+                    
+                    
+                    <div class="ball"></div>
+                  </label>
+                </div>
+              
+            </div>
+          
+          
+          
+          <ul class="navbar-nav order-md-0 mr-md-auto">
+             
+            
+              
+                <li class="nav-item mx-1 my-2">
+                  <a class="btn bg-nav text-clr1" href="/tags/"> Categorias</a>
+                </li>
+              
+            
+              
+                <li class="nav-item mx-1 my-2">
+                  <a class="btn bg-nav text-clr1" href="https://forum.kali.seg.br">Forum (fase beta)</a>
+                </li>
+              
+            
+              
+                <li class="nav-item mx-1 my-2">
+                  <a class="btn bg-nav text-clr1" href="https://chat.kali.seg.br">Chat (em construção)</a>
+                </li>
+              
+            
+              
+                <li class="nav-item mx-1 my-2">
+                  <a class="btn bg-nav text-clr1" href="/contato/">Contato</a>
+                </li>
+              
+            
+          </ul>
+          
+
+          
+          
+        </div>
+      
+      
+    </div>
+    
+  </nav>
+</header>
+
+    
+    
+    <div id="content">
+<div class="container-fluid  text-light text-center bg-clr1 pb-3 pt-4 shadow position-relative">
+  <div style="height:3.5rem;"></div>
+  <h1>/PROC – HidePID – Esconder Processos de outros usuários</h1>
+  <p class="description">Aprenda a esconder processos em execução de outros usuários e se proteger contra data leaks.</p>
+</div>
+<div class="container-fluid bg-nav p-4">
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bg-mat p-4 rounded" style="overflow-x: auto;">
+        <div class="h4 mb-3">
+        Contents
+        </div>
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#conceito">Conceito</a>
+      <ol>
+        <li><a href="#exemplo">Exemplo</a></li>
+      </ol>
+    </li>
+    <li><a href="#problema">Problema</a>
+      <ol>
+        <li><a href="#mas-porquê-isso-é-um-problema">Mas porquê isso é um problema?</a>
+          <ol>
+            <li><a href="#que-tipos-de-complicações">Que tipos de complicações?</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#como-se-proteger">Como se proteger?</a>
+      <ol>
+        <li><a href="#nível-padrão--0">Nível Padrão – 0</a></li>
+        <li><a href="#nível-parcialmente-restrito--1">Nível Parcialmente Restrito – 1</a></li>
+        <li><a href="#nível-restrito--2">Nível restrito – 2</a></li>
+        <li><a href="#nível-altamente-restrito--4">Nível altamente restrito – 4</a></li>
+      </ol>
+    </li>
+    <li><a href="#como-mudar-essa-opção">Como mudar essa opção?</a>
+      <ol>
+        <li><a href="#com-o-sistema-em-execução">Com o sistema em execução</a></li>
+        <li><a href="#modo-permanente">Modo permanente</a></li>
+      </ol>
+    </li>
+    <li><a href="#porque-essa-opção-não-vem-restrita-por-padrão-ao-instalar-o-sistema-existe-contras">Porque essa opção não vem restrita por padrão ao instalar o sistema? Existe contras?</a></li>
+  </ol>
+</nav>
+      </div>
+    </div>
+ 
+    <div class="col-md-8">
+  
+      
+      
+      
+            
+            
+            
+            
+      
+
+      
+
+      
+        
+      
+      <div class="py-1">
+        <div class="row">
+          <div class="col-md-auto small text-muted post-meta my-auto">
+            
+            
+              
+                
+              
+            
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            By Rafael Grether &#183; 10 min read &#183; <span class=''>Last updated: January 28, 2024</span></div>
+          
+          
+          
+          <div class="col-md-auto ml-auto my-auto mr-2">
+            Share on:&nbsp;&nbsp;
+            <div class="d-inline-block lead">
+              
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&quote=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Facebook" aria-label="Share on Facebook"><span class="fab fa-facebook"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="https://twitter.com/intent/tweet?source=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios:%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f" rel="noreferrer nofollow" target="_blank" title="Share on Twitter" aria-label="Share on Twitter"><span class="fab fa-twitter"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&summary=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.&source=KALI%20-%20Seguran%c3%a7a%20Defensiva%20e%20Ofensiva" rel="noreferrer nofollow" target="_blank" title="Share on LinkedIn" aria-label="Share on LinkedIn"><span class="fab fa-linkedin"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="https://t.me/share/url?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&text=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Telegram" aria-label="Share on Telegram"><span class="fab fa-telegram"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="whatsapp://send?text=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f%0A%0A%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" data-text="/PROC – HidePID – Esconder Processos de outros usuários" data-href="https://kali.seg.br/post/1_procfs_hidepid_esconder_processos_outros_usuarios/" rel="noreferrer nofollow" target="_blank" title="Share on Whatsapp" aria-label="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="https://reddit.com/submit?url=https%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f&title=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios" rel="noreferrer nofollow" target="_blank" title="Share on Reddit" aria-label="Share on Reddit"><span class="fab fa-reddit"></span></a>&nbsp;&nbsp;
+              
+              
+                <a href="mailto:?subject=%2fPROC%20%e2%80%93%20HidePID%20%e2%80%93%20Esconder%20Processos%20de%20outros%20usu%c3%a1rios&body=Aprenda%20a%20esconder%20processos%20em%20execu%c3%a7%c3%a3o%20de%20outros%20usu%c3%a1rios%20e%20se%20proteger%20contra%20data%20leaks.%0A%0Ahttps%3a%2f%2fkali.seg.br%2fpost%2f1_procfs_hidepid_esconder_processos_outros_usuarios%2f" target="_blank" title="Share via email" aria-label="Share via email"><span class="fas fa-envelope"></span></a>
+              
+            </div>
+          </div>
+          
+        </div>
+        
+        
+        
+      </div>
+      
+      
+      <div class="py-3 my-2">
+      <p>Conceito, Exemplos e Formas de Proteção</p>
+<h2 id="conceito">Conceito</h2>
+<p>/PROC pode ser considerado como um sistema de arquivos “virtual” que contém arquivos especiais com informações do hardware, informações e configurações do sistema a um nível do kernel (como /proc/meminfo , /proc/mounts , /proc/sys) e processos em execução no sistema.</p>
+<p>Existe um conceito que diz “everything is a file” (ou seja, tudo é um arquivo). Nisso se resume a arquitetura do sistema operacional.<br>
+Isso significa que tudo o que existe no sistema, desde arquivos, diretórios, até sockets e processos; é um arquivo. Mais especificamente falando, um descritor de arquivo, que de modo grosseiro seria uma espécie de “código” que o sistema operacional utiliza para gerenciamento, e isso ocorre através de uma camada especial no kernel do sistema, que é o chamado sistema de arquivos “virtual”, ou PROCFS, mais conhecido como /PROC filesystem.</p>
+<h3 id="exemplo">Exemplo</h3>
+<p>Em um terminal, vamos criar um arquivo teste.txt e escrever algumas coisas nele:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim teste.txt
+</span></span></code></pre></div><p>Em outro terminal, ao analisarmos os processos em execução no sistema, encontramos o nosso processo criado e seu respectivo PID:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_vim.webp" alt="."></p>
+<p>Aqui, o PID 2143 que está em execução, é um descritor de arquivo que está localizado no sistema de arquivos “virtual” /PROC.<br>
+Podemos verificar “na unha” os detalhes da execução dele diretamente pelo diretório /PROC (abaixo), no qual podemos saber o que o PID em questão está fazendo:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_proc.webp" alt="."></p>
+<h2 id="problema">Problema</h2>
+<p>O problema é que em toda instalação padrão do sistema, o sistema de arquivos “virtual” /PROC permite que qualquer usuário possa visualizar processos em execução (isso inclui arquivos abertos) de outros usuários, incluindo processos do usuário ROOT!</p>
+<p>Basta executar um $ ps aux que você verá os processos em execução de todos os usuários.</p>
+<h3 id="mas-porquê-isso-é-um-problema">Mas porquê isso é um problema?</h3>
+<p>Se um invasor conseguir acesso a shell do sistema (utilizando algum RCE por exemplo), ele pode ter acesso a informações de processos que usuários do sistema estejam utilizando. Em suma, isso pode ser considerado um vazamento de dados (data leak), que pode levar a complicações sérias.</p>
+<h4 id="que-tipos-de-complicações">Que tipos de complicações?</h4>
+<p>Este invasor com acesso a estas informações do sistema pode fazer uso de engenharia social para roubar mais dados ou extorquir o administrador do sistema.<br>
+Como um usuário por padrão consegue ver processos em execução de outros usuários, vamos supor que o invasor resolva monitorar em tempo real os processos em execução no sistema:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_tmux.webp" alt="."></p>
+<p>Observem que em um momento, o invasor nessa situação hipotética capturou a informação de que o ROOT estava criando/alterando um arquivo sugestivo chamado “senhas_de_emails.txt“.</p>
+<p>Em face disso, o invasor poderia fazer uso de engenharia social e enviar um email para o administrador da empresa com o seguinte conteúdo:</p>
+<p><code>CARO ADMINISTRADOR, TOMEI CONTROLE DO SEU SISTEMA E TODOS OS SEUS ARQUIVOS, E TIVE ACESSO INCLUSIVE AO ARQUIVO SENHAS_DE_EMAILS.TXT QUE VOCE MEXEU HOJE. SIM, TIVE ACESSO A TODOOOS OS SEUS EMAILS, CONVERSAS PRIVADAS, SENHAS, TUDO. AH, E NEM ADIANTA MUDAR AS SENHAS, PORQUE JÁ FIZ BACKUP DE TODOS OS EMAILS E ENCONTREI COISAS BEM INTERESSANTES. CLARO QUE POSSO ESQUECER TUDO ISSO SE VOCÊ ME DER UM INCENTIVO. QUE TAL ALGO EM TORNO DE 1 BITCOIN PARA O ENDEREÇO ABAIXO? BTC: XXXXXXXXXXXXXXXXXXXXXXXX SENÃO, ALGUMAS INFORMAÇÕES QUE DEVERIAM SER SIGILOSAS PODEM SER VAZADAS. VOCÊ TEM 48 HORAS.</code></p>
+<p>Obviamente o invasor não teve acesso a nenhuma senha e nenhum e-mail, mas nesse exemplo hipotético, ele fez uso de uma informação que ele tinha (arquivo senhas_de_email.txt que foi acessado pelo root) e usou essa informação a seu favor para enganar o administrador, e contudo fazer ele acreditar que de fato o invasor teve acesso a essas informações. E como o administrador sabe que ele realmente alterou o arquivo senhas_de_emails.txt, ele automaticamente vai acreditar que todo o restante de informações ditas pelo invasor são também verdadeiras.</p>
+<p>Quem trabalha com engenharia social, conhece todos esses mecanismos de PNL (programação neuro linguística).</p>
+<h2 id="como-se-proteger">Como se proteger?</h2>
+<p>O Kernel possui uma funcionalidade que esconde informações de processos de outros usuários do sistema. Dando uma olhada no código fonte do Kernel (<a href="https://github.com/torvalds/linux)">https://github.com/torvalds/linux)</a>, encontramos a seguinte informação:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_source.webp" alt="."></p>
+<h3 id="nível-padrão--0">Nível Padrão – 0</h3>
+<p>Por padrão, o Kali Linux (e a maioria das distribuições Linux) mantém os processos visíveis para todos os usuários (HIDEPID = 0), o que conforme vimos é um risco de segurança, pois pode vazar informações privilegiadas para outros usuários.</p>
+<h3 id="nível-parcialmente-restrito--1">Nível Parcialmente Restrito – 1</h3>
+<p>É possível restringir um pouco essa visibilidade, para HIDEPID = 1.
+Quando setado para 1 (HIDEPID_NO_ACCESS), a partição /PROC é montada de modo a permitir que outros usuários consigam saber o número dos processos de todos os usuários (PID) que estão em execução, mas não permite que se consiga ler a informação do usuário que está executando e nem do que está sendo rodado nesses processos.<br>
+Veja abaixo como funciona essa restrição na prática:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_hidepid_1.webp" alt="."></p>
+<p>Observem que utilizando o utilitário ps/top/htop, meu usuário comum (devnull) já não conseguiu mais visualizar os processos abertos pelo root, apenas meus próprios processos. Porém investigando “na unha” a partição /proc, consigo visualizar a numeração de processos (PID) não iniciados por mim. Mas ao tentar visualizá-los, não consigo saber nem quem iniciou o processo e nem o que é o processo em questão, pois o /PROC agora me limita essa visualização.<br>
+Esta opção já é boa, mas abre brechas para se caso houver uma vulnerabilidade que permita explorar o /PROC, se saiba a numeração dos processos em execução, e consequentemente, explorar seu conteúdo.</p>
+<h3 id="nível-restrito--2">Nível restrito – 2</h3>
+<p>Para restringir ainda mais, podemos alterar a visibilidade para HIDEPID = 2.
+Quando setado para 2 (HIDEPID_INVISIBLE), a partição /PROC é montada para não permitir que os usuários sequer saibam números de processos que não sejam os do próprio usuário. Veja abaixo o mesmo cenário acima com o HIDEPID = 2:</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_hidepid_2.webp" alt="."></p>
+<p>Observem agora, que apenas o número dos processos do usuário logado constam na partição /PROC, todos os demais permanecem invisíveis.</p>
+<p>Desta forma, notem que a partição /PROC passa a ter um comportamento diferente, a depender do usuário que estiver logado.</p>
+<p>Esta opção já é restrita o suficiente, e ideal para a maior parte dos casos.</p>
+<h3 id="nível-altamente-restrito--4">Nível altamente restrito – 4</h3>
+<p>Chegamos no HIDEPID = 4 (ou HIDEPID_NOT_PTRACEABLE).<br>
+Esta opção restringe os usuários de realizar até mesmo uma depuração ou rastreamento de system calls (chamadas do sistema), que envolvam PID que não sejam os iniciados pelo próprio usuário. Esta opção, por ser altamente restrita, não é recomendável para quem precise depurar aplicações e monitorar o funcionamento dela, ou rastrear as system calls. Recomendo ativar apenas em casos mais estritos e específicos.<br>
+Como exemplo, se investigarmos as system calls do comando “ps aux” no nivel restrito (hidepid = 2), podemos visualizar o número de processos que não deveriam ser visíveis (abaixo):</p>
+<p><img src="https://kali.seg.br/post/imgs/hidepid_hidepid_2_debug.webp" alt="."></p>
+<p>Já utilizando o nível altamente restrito, nem isso é possível fazer.</p>
+<h2 id="como-mudar-essa-opção">Como mudar essa opção?</h2>
+<p>Existem duas formas:</p>
+<h3 id="com-o-sistema-em-execução">Com o sistema em execução</h3>
+<p>Bastando para isso remontar a partição /PROC (executando como root ou elevando privilégios com o sudo/doas), informando o nível de restrição que se queira:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mount -o remount,rw,hidepid<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> /proc
+</span></span></code></pre></div><p>Desse modo, remontamos a partição /PROC, com permissões de leitura e escrita (obviamente), e passamos o nível de restrição de visibilidade de processo que queremos.</p>
+<p>Esse modo não é permanente, ou seja, sempre que o sistema for reiniciado, será necessário executar o comando novamente.</p>
+<h3 id="modo-permanente">Modo permanente</h3>
+<p>Dessa forma, o sistema já será sempre inicializado com a restrição de visibilidade de processos definida. Portanto alteramos o arquivo /etc/fstab (fstab vem de file system table), responsável por gerenciar os sistemas de arquivos e dispositivos que devem ser montados durante a inicialização do sistema.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proc    /proc        proc        defaults,hidepid<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>    <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>A linha acima no fstab, monta o sistema de arquivos “proc” no ponto de montagem /proc, mantendo o padrão (defaults) desse sistema de arquivos, acrescentando a restrição de visibilidade de processos (hidepid=2), ignorando flags de backup e verificação de integridade, que não fazem sentido em um procfs.</p>
+<h2 id="porque-essa-opção-não-vem-restrita-por-padrão-ao-instalar-o-sistema-existe-contras">Porque essa opção não vem restrita por padrão ao instalar o sistema? Existe contras?</h2>
+<p>Isso ocorre porque o Kali Linux (e a maioria das distribuições Linux) são abertas, para que se tenha uma alta funcionalidade no uso de ferramentas e processos.</p>
+<p>Isso significa que uma restrição dessa visibilidade pode interferir no funcionamento de algumas ferramentas, principalmente as de monitoração de processos do sistema.<br>
+Claro que é possível contornar isso, modificando as permissões do grupo de acesso utilizado por essas ferramentas, e cada caso deve ser avaliado isoladamente.</p>
+<p>Lembrem-se que quanto mais segurança for parametrizado em um sistema, mais restrito ele é, e em alguns casos menos funcional ele fica.</p>
+      </div>
+      
+      
+        <div class="pt-4 mt-2 border-top">
+          <div class="row">
+            <div class="col-md-7 small text-muted post-meta my-1">
+              
+              
+                
+              
+                
+              
+                
+              
+                
+              </div>
+            
+            
+            
+          </div>
+        
+          
+            <div class="mt-3"><a href="/tags/seguranca/"><span class="badge badge-pill bg-clr2 text-nav mr-2 py-2">#SEGURANCA</span></a><a href="/tags/defesa_interna/"><span class="badge badge-pill bg-clr2 text-nav mr-2 py-2">#DEFESA INTERNA</span></a></div>
+          
+        
+        </div>
+      
+    
+      
+      </div>
+    </div>
+    
+  
+  
+  
+</div>
+
+    </div><footer class="text-center p-2 text-muted footer">
+  
+    
+  
+
+  
+
+  <div class="py-2 copyright">
+    <small>Copyright &#169; 2024 Rafael Grether <b>&#183;</b> Content license: CC-BY-SA-3.0 <b>&#183;</b> Powered by <a class="font-weight-bold text-reset text-decoration-none" href="https://gohugo.io">Hugo</a> <b>&#183;</b> Theme <a class="font-weight-bold text-reset text-decoration-none" href="https://github.com/Softorage/HugoTheme-VibrantShadows">Vibrant Shadows</a> by <span class="softorage"><a class="font-weight-bold text-reset" href="https://softorage.com">Softorage</a></span></small>
+  </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    
+    
+    
+    <script src="/assets/js/main.c095d0b1152e697df4ebfeb82fc47761814312d52160af2843c91633e7a4e7a2.js" integrity="sha256-wJXQsRUuaX306/64L8R3YYFDEtUhYK8oQ8kWM&#43;ek56I=" crossorigin="anonymous"></script>
+    
+    <script src="/js/custom.min.ddbdd4a46a20f2f1ed95d97d7d93c39ed419cef9e43e2159e5338f1bbc43046c.js" integrity="sha256-3b3UpGog8vHtldl9fZPDntQZzvnkPiFZ5TOPG7xDBGw=" crossorigin="anonymous"></script>
+    
+    <script></script>
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Lato&display=swap" rel="stylesheet">
+    
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </body>
+</html>

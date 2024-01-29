@@ -11,22 +11,22 @@ taxonomies:
 
 menu:
   main:
-    - identifier: "forum" # different for all menu entries, useful especially when menu name coincides
-      name: "1. Forum (fase beta)" # shown on website/blog
-      url: "https://forum.kali.seg.br" # user is taken to this url when user clicks on menu item
-      weight: 10 # used to sort menu items by weight
-    - identifier: "chat" # different for all menu entries, useful especially when menu name coincides
-      name: "2. Chat (em construção)" # shown on website/blog
-      url: "https://chat.kali.seg.br" # user is taken to this url when user clicks on menu item
-      weight: 10 # used to sort menu items by weight
-    - identifier: "contato" # different for all menu entries, useful especially when menu name coincides
-      name: "3. Contato" # shown on website/blog
-      url: "/contato/" # user is taken to this url when user clicks on menu item
-      weight: 10 # used to sort menu items by weight
     - identifier: "tags" # different for all menu entries, useful especially when menu name coincides
       name: " Categorias" # shown on website/blog
       url: "/tags/" # user is taken to this url when user clicks on menu item
       weight: 10 # used to sort menu items by weight
+    - identifier: "forum" # different for all menu entries, useful especially when menu name coincides
+      name: "Forum (fase beta)" # shown on website/blog
+      url: "https://forum.kali.seg.br" # user is taken to this url when user clicks on menu item
+      weight: 20 # used to sort menu items by weight
+    - identifier: "chat" # different for all menu entries, useful especially when menu name coincides
+      name: "Chat (em construção)" # shown on website/blog
+      url: "https://chat.kali.seg.br" # user is taken to this url when user clicks on menu item
+      weight: 30 # used to sort menu items by weight
+    - identifier: "contato" # different for all menu entries, useful especially when menu name coincides
+      name: "Contato" # shown on website/blog
+      url: "/contato/" # user is taken to this url when user clicks on menu item
+      weight: 40 # used to sort menu items by weight
 
 # Allow HTML in markdown to be rendered, for social platform list in configuration options
 markup:
