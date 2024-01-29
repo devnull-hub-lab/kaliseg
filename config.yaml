@@ -69,6 +69,9 @@ params:
         caption:
           light: ["icon", "fa-sun"]
           dark: ["icon", "fa-moon"]
+  backgImage:
+      landingPage: "/assets/kali-blue-bg.webp"
+      post: "enable"
   position: # optional
     social:
       profiles: "navbar" # accepts value: navbar/footer | may use 'navbar' if number of items in main menu and social profiles are minimal, otherwise 'footer' is recommended | default: "footer"
