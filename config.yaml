@@ -9,6 +9,13 @@ theme: "HugoTheme-VibrantShadows"
 taxonomies:
   tag: "tags"
 
+menu:
+  main:
+    - identifier: "contato" # different for all menu entries, useful especially when menu name coincides
+      name: "Contato" # shown on website/blog
+      url: "/contato/" # user is taken to this url when user clicks on menu item
+      weight: 10 # used to sort menu items by weight
+
 # Allow HTML in markdown to be rendered, for social platform list in configuration options
 markup:
   goldmark:
